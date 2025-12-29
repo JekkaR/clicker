@@ -2,226 +2,182 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 html, body {
   height: 100%;
-  overflow: hidden;
   background: radial-gradient(circle at top, #7b3ff2, #1a082d);
   color: #fff;
+  overflow: hidden;
+  touch-action: manipulation;
 }
 
+/* ===== ЭКРАНЫ ===== */
 .screen {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .hidden {
   display: none;
 }
 
+/* ===== АВТОРИЗАЦИЯ ===== */
+#auth {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .subtitle {
-  margin-bottom: 20px;
   opacity: 0.8;
+  margin-bottom: 20px;
 }
 
 input {
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 14px;
   border: none;
-  width: 70%;
+  width: 75%;
   margin-bottom: 15px;
 }
 
 .main-btn {
-  background: #7c5cff;
+  background: linear-gradient(135deg, #7c5cff, #9b7bff);
   border: none;
-  padding: 12px 30px;
-  border-radius: 14px;
+  padding: 14px 36px;
+  border-radius: 18px;
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
 }
 
+/* ===== ШАПКА ===== */
 header {
-  width: 100%;
-  padding: 12px 20px;
+  height: 60px;
+  padding: 0 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
+  flex-shrink: 0;
 }
 
+/* ===== ВКЛАДКИ ===== */
 .tab {
   flex: 1;
-  width: 100%;
-  padding: 15px;
+  padding: 20px;
   overflow-y: auto;
+  padding-bottom: 110px;
 }
 
+/* ===== ГЛАВНЫЙ ЭКРАН ===== */
 .cat-card {
   text-align: center;
 }
 
 .cat-card img {
-  width: 160px;
-  margin: 20px 0;
+  width: 170px;
+  margin: 25px auto;
 }
 
 .stats {
-  margin-bottom: 15px;
-}
-
-.click-btn {
-  background: linear-gradient(135deg, #ffd54f, #ffb300);
-  color: #000;
-  border: none;
-  padding: 16px 40px;
   font-size: 18px;
-  border-radius: 20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 15px;
-  border-radius: 16px;
-  margin-bottom: 12px;
-}
-
-.card button {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  background: linear-gradient(135deg, #6aff6a, #2ecc71);
-  border: none;
-  border-radius: 14px;
-  font-weight: bold;
-}
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background: rgba(0,0,0,0.4);
-}
-/* ==== FIX ДЛЯ МОЗГА ==== */
-
-body {
-  margin: 0;
-  overflow: hidden; /* убираем скролл */
-  touch-action: manipulation;
-}
-
-.screen {
-  height: 100vh;
+  margin-bottom: 20px;
 }
 
 /* ===== КНОПКА КЛИКА ===== */
 .click-btn {
   width: 90%;
-  max-width: 360px;
+  max-width: 380px;
   height: 90px;
-  font-size: 28px;
+  font-size: 30px;
   border-radius: 30px;
-  margin: 25px auto;
+  border: none;
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
+  color: #000;
+  font-weight: bold;
+  margin: 0 auto;
   display: block;
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card {
+  background: rgba(255,255,255,0.12);
+  padding: 18px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.card button {
+  margin-top: 12px;
+  width: 100%;
+  height: 55px;
+  background: linear-gradient(135deg, #6aff6a, #2ecc71);
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* ===== ЗАВОД ===== */
+#factory {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.factory-card {
+  width: 90%;
+  max-width: 420px;
+  margin-top: 40px;
+  padding: 25px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 26px;
+  text-align: center;
+}
+
+.factory-card h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.factory-card p {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.factory-btn {
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(180deg, #7CFF7A, #35C84A);
+  color: #000;
+  font-weight: bold;
 }
 
 /* ===== НИЖНЕЕ МЕНЮ ===== */
 nav {
+  height: 80px;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
   background: #2b1457;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 nav button {
   flex: 1;
-  height: 65px;
-  font-size: 18px;
-  border-radius: 18px;
   margin: 0 6px;
-}
-
-/* ===== ВКЛАДКИ ===== */
-.tab {
-  height: calc(100vh - 260px);
-  overflow-y: auto;
-  padding-bottom: 80px;
-}
-.factory-card {
-  width: 90%;
-  max-width: 420px;
-  margin: 40px auto;
-  padding: 25px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 24px;
-  text-align: center;
-  color: #fff;
-}
-
-.factory-card h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.factory-card p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.factory-btn {
-  width: 100%;
-  height: 70px;
-  font-size: 20px;
   border-radius: 20px;
   border: none;
-  background: linear-gradient(180deg, #7CFF7A, #35C84A);
-  color: #000;
-  font-weight: bold;
-  }
-/* ===== ЗАВОД ===== */
-
-#factory {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-}
-
-.factory-card {
-  width: 90%;
-  max-width: 420px;
-  padding: 25px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 24px;
-  text-align: center;
+  font-size: 20px;
+  background: rgba(255,255,255,0.15);
   color: #fff;
 }
-
-.factory-card h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.factory-card p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.factory-btn {
-  width: 100%;
-  height: 70px;
-  font-size: 20px;
-  border-radius: 20px;
-  border: none;
-  background: linear-gradient(180deg, #7CFF7A, #35C84A);
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  }
