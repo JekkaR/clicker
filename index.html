@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>CATBOOM: Империя кошек</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CATBOOM</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div id="auth" class="screen">
-  <h1>🐱 CATBOOM</h1>
-  <input id="nicknameInput" placeholder="Введите ник">
-  <button id="playBtn">Играть</button>
-</div>
+<div id="app">
 
-<div id="game" class="screen hidden">
+  <!-- LOGIN -->
+  <div id="login" class="screen">
+    <h1>🐱 CATBOOM</h1>
+    <input type="text" id="nickname" placeholder="Введи ник" />
+    <button onclick="startGame()">PLAY</button>
+  </div>
 
-  <header>
-    <span>👤 <b id="nickname"></b></span>
-    <span>💰 <b id="balance">0</b> k</span>
-  </header>
+  <!-- GAME -->
+  <div id="game" class="screen hidden">
 
-  <div class="center">
-    <div class="cat">🐱</div>
-    <button class="click-btn" id="clickBtn">КЛИК</button>
-
-    <div class="stats">
-      <div>👆 За клик: <b id="perClick">1</b> k</div>
-      <div>💤 В ожидании: <b id="perSecond">0.5</b> k/сек</div>
+    <!-- HEADER -->
+    <div class="header">
+      <div>Баланс: <span id="balance">0</span> k</div>
+      <div>За клик: <span id="perClick">1</span> k</div>
     </div>
-  </div>
 
-  <nav>
-    <button data-tab="shop">🛒</button>
-    <button data-tab="cats">🐱</button>
-    <button data-tab="factory">🏭</button>
-  </nav>
+    <!-- TABS -->
+    <div class="tab active" id="tab-main">
+      <div class="cat-area">
+        <img src="https://i.imgur.com/3ZQ3ZQF.png" class="cat" />
+        <button class="click-btn" onclick="clickCat()">КЛИК 🐾</button>
+      </div>
+    </div>
 
-  <div id="shop" class="tab">
-    <h2>Магазин</h2>
-    <button id="buyClickBtn">+0.5 к клику (<span id="clickPrice"></span>k)</button>
-    <button id="buyIdleBtn">+0.25 к ожиданию (<span id="idlePrice"></span>k)</button>
-  </div>
+    <div class="tab" id="tab-shop">
+      <h2>🛒 Магазин</h2>
+      <button onclick="buyUpgrade()">Прокачка (+0.5 за клик) — <span id="upgradePrice">10</span> k</button>
+    </div>
 
-  <div id="cats" class="tab hidden">
-    <h2>Коты</h2>
-    <div id="catsList"></div>
-  </div>
+    <div class="tab" id="tab-cats">
+      <h2>🐈 Коты</h2>
+      <p>Скоро тут будут мемные коты 😼</p>
+    </div>
 
-  <div id="factory" class="tab hidden">
-    <h2>Завод</h2>
-    <p>Котов работает: <b id="factoryCats">0</b> / <b id="factoryLimit">5</b></p>
-    <p>Доход: <b id="factoryIncome">0</b> k/сек</p>
-    <button id="upgradeFactoryBtn">
-      Расширить завод (<span id="factoryPrice"></span>k)
-    </button>
+    <div class="tab" id="tab-settings">
+      <h2>⚙️ Настройки</h2>
+      <button onclick="resetGame()">Сброс</button>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <button onclick="openTab('main')">🏠</button>
+      <button onclick="openTab('shop')">🛒</button>
+      <button onclick="openTab('cats')">🐱</button>
+      <button onclick="openTab('settings')">⚙️</button>
+    </nav>
+
   </div>
 
 </div>
