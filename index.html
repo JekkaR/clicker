@@ -74,11 +74,16 @@
   </div>
 
   <!-- Завод -->
+  <div id="factory" class="tab hidden">
   <div class="factory-card">
-  <h2>🏭 Завод</h2>
-  <p>Котов: 0 / 5</p>
-  <button class="factory-btn">Расширить (500k)</button>
-</div>
+    <h2>🏭 Завод</h2>
+    <p>Котов: <span id="factoryCats">0</span> / <span id="factoryLimit">5</span></p>
+
+    <button class="factory-btn" onclick="upgradeFactory()">
+      Расширить (500k)
+    </button>
+  </div>
+</div
 
   <!-- Навигация -->
   <nav>
