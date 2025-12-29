@@ -42,7 +42,7 @@ function updateUI() {
   document.getElementById("perSecond").innerText = data.perSecond;
   document.getElementById("clickPrice").innerText = 10 * Math.pow(2, data.clickLevel);
   document.getElementById("idlePrice").innerText = 15 * Math.pow(2, data.idleLevel);
-  document.getElementById("factoryCats").innerText = data.cats.reduce((a,b)=>a+b,0);
+  document.getElementById("factoryCats").innerText = data.factoryCats || 0;
   document.getElementById("factoryLimit").innerText = data.factoryLimit;
   document.getElementById("factoryPrice").innerText = data.factoryPrice;
 }
