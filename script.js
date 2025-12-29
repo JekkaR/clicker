@@ -83,11 +83,14 @@ function buyCat(i) {
 }
 
 function upgradeFactory() {
-  if (data.balance < data.factoryPrice) return;
-  data.balance -= data.factoryPrice;
-  data.factoryLimit *= 2;
-  data.factoryPrice *= 2;
-  save();
+  if (balance >= factoryPrice) {
+    balance -= factoryPrice;
+    factoryLimit += 5;
+    factoryPrice *= 2;
+
+    updateUI();
+  }
+}
 }
 
 function openTab(id) {
