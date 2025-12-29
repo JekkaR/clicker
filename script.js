@@ -1,15 +1,13 @@
-// ===== STATE =====
 let state = {
   nickname: '',
   balance: 0,
   perClick: 1,
-  passive: 0,
-  tab: 'main'
+  passive: 0
 };
 
-// ===== ELEMENTS =====
-const loginScreen = document.getElementById('login');
-const gameScreen = document.getElementById('game');
+const login = document.getElementById('login');
+const game = document.getElementById('game');
+
 const playBtn = document.getElementById('playBtn');
 const nicknameInput = document.getElementById('nickname');
 
@@ -19,71 +17,65 @@ const passiveEl = document.getElementById('passive');
 
 const clickBtn = document.getElementById('clickBtn');
 
-// ===== LOAD / SAVE =====
-function saveGame() {
-  localStorage.setItem('catboom_save', JSON.stringify(state));
+// SAVE / LOAD
+function save() {
+  localStorage.setItem('catboom', JSON.stringify(state));
 }
 
-function loadGame() {
-  const save = localStorage.getItem('catboom_save');
-  if (save) {
-    state = JSON.parse(save);
-    return true;
-  }
-  return false;
+function load() {
+  const s = localStorage.getItem('catboom');
+  if (s) state = JSON.parse(s);
 }
 
-// ===== UI =====
+// UI
 function updateUI() {
   balanceEl.textContent = state.balance.toFixed(1);
-  perClickEl.textContent = state.perClick.toFixed(1);
-  passiveEl.textContent = state.passive.toFixed(1);
+  perClickEl.textContent = state.perClick;
+  passiveEl.textContent = state.passive;
 }
 
-// ===== LOGIN =====
-playBtn.addEventListener('click', () => {
-  const nick = nicknameInput.value.trim();
-  if (!nick) return alert('Введи ник');
-
-  state.nickname = nick;
-
-  loginScreen.classList.add('hidden');
-  gameScreen.classList.remove('hidden');
-
-  saveGame();
+// LOGIN
+playBtn.onclick = () => {
+  if (!nicknameInput.value) return alert('Введи ник');
+  state.nickname = nicknameInput.value;
+  login.classList.add('hidden');
+  game.classList.remove('hidden');
+  save();
   updateUI();
-});
+};
 
-// ===== AUTO LOGIN =====
-if (loadGame()) {
-  loginScreen.classList.add('hidden');
-  gameScreen.classList.remove('hidden');
+// AUTO LOGIN
+load();
+if (state.nickname) {
+  login.classList.add('hidden');
+  game.classList.remove('hidden');
   updateUI();
 }
 
-// ===== CLICK =====
-clickBtn.addEventListener('click', () => {
+// CLICK
+clickBtn.onclick = () => {
   state.balance += state.perClick;
   updateUI();
-  saveGame();
-});
+  save();
+};
 
-// ===== PASSIVE INCOME =====
+// PASSIVE
 setInterval(() => {
   state.balance += state.passive;
   updateUI();
-  saveGame();
+  save();
 }, 1000);
 
-// ===== TABS =====
+// TABS
 document.querySelectorAll('.nav button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const tab = btn.dataset.tab;
-
+  btn.onclick = () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(`tab-${tab}`).classList.add('active');
-
-    state.tab = tab;
-    saveGame();
-  });
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  };
 });
+
+// RESET
+function resetGame() {
+  localStorage.removeItem('catboom');
+  location.reload();
+}
