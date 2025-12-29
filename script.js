@@ -1,14 +1,3 @@
-let data = {
-  balance: 0,
-  perClick: 1,
-  perSecond: 0.5,
-  clickLevel: 0,
-  idleLevel: 0,
-
-  factoryCats: 0,
-  factoryLimit: 5,
-  factoryPrice: 500
-};
 let data = JSON.parse(localStorage.getItem("catboom")) || {
   nickname: "",
   balance: 0,
@@ -53,7 +42,9 @@ function updateUI() {
   document.getElementById("perSecond").innerText = data.perSecond;
   document.getElementById("clickPrice").innerText = 10 * Math.pow(2, data.clickLevel);
   document.getElementById("idlePrice").innerText = 15 * Math.pow(2, data.idleLevel);
-  document.getElementById("factoryCats").innerText = data.factoryCats || 0;
+
+  const totalCats = data.cats.reduce((a,b)=>a+b,0);
+  document.getElementById("factoryCats").innerText = totalCats;
   document.getElementById("factoryLimit").innerText = data.factoryLimit;
   document.getElementById("factoryPrice").innerText = data.factoryPrice;
 }
@@ -65,43 +56,48 @@ function clickCat() {
 }
 
 function buyClick() {
-  let price = 10 * Math.pow(2, data.clickLevel);
+  const price = 10 * Math.pow(2, data.clickLevel);
   if (data.balance < price) return;
   data.balance -= price;
   data.perClick += 0.5;
   data.clickLevel++;
   save();
+  updateUI();
 }
 
 function buyIdle() {
-  let price = 15 * Math.pow(2, data.idleLevel);
+  const price = 15 * Math.pow(2, data.idleLevel);
   if (data.balance < price) return;
   data.balance -= price;
   data.perSecond += 0.25;
   data.idleLevel++;
   save();
+  updateUI();
 }
 
 function buyCat(i) {
-  let price = catsData[i].base * Math.pow(2, data.cats[i]);
+  const price = catsData[i].base * Math.pow(2, data.cats[i]);
+  const totalCats = data.cats.reduce((a,b)=>a+b,0);
+
   if (data.balance < price) return;
-  if (data.cats.reduce((a,b)=>a+b,0) >= data.factoryLimit) return;
+  if (totalCats >= data.factoryLimit) return;
+
   data.balance -= price;
   data.cats[i]++;
   data.perClick += catsData[i].click;
   data.perSecond += catsData[i].idle;
   save();
+  updateUI();
 }
 
 function upgradeFactory() {
-  if (balance >= factoryPrice) {
-    balance -= factoryPrice;
-    factoryLimit += 5;
-    factoryPrice *= 2;
+  if (data.balance < data.factoryPrice) return;
 
-    updateUI();
-  }
-}
+  data.balance -= data.factoryPrice;
+  data.factoryLimit += 5;
+  data.factoryPrice *= 2;
+  save();
+  updateUI();
 }
 
 function openTab(id) {
