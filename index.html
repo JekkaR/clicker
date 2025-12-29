@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicker</title>
+  <title>catboom</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- КНОПКА НАСТРОЕК -->
-  <button id="settingsBtn">⚙️</button>
-
-  <!-- ИГРА -->
-  <div id="game">
-    <div id="balance">0 c</div>
-    <div id="perClick">+1 c за клик</div>
-
-    <button id="clickBtn">КЛИК</button>
-
-    <!-- ПРОКАЧКА -->
-    <div id="upgrade">
-      <div>Прокачка клика</div>
-      <div id="upgradeInfo">+0.5 c</div>
-      <button id="upgradeBtn">Купить за 10 c</button>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="balance">
+      Баланс<br>
+      <span id="balance">0</span> c
     </div>
+
+    <div class="title">catboom</div>
+
+    <button id="settingsBtn" class="settings">⚙️</button>
   </div>
 
-  <!-- НАСТРОЙКИ -->
-  <div id="settings" class="hidden">
-    <div class="panel">
-      <h2>Настройки</h2>
+  <!-- MAIN -->
+  <div class="main">
+    <button id="clickBtn" class="click-circle">
+      КЛИК
+    </button>
+  </div>
 
+  <!-- UPGRADE -->
+  <div class="upgrade">
+    <div class="upgrade-title">Прокачка</div>
+    <div class="upgrade-info">
+      <span id="upgradeText">+0.5c за клик</span>
+      <span id="upgradeCost">10c</span>
+    </div>
+    <button id="upgradeBtn" class="buy">КУПИТЬ</button>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settings" class="modal hidden">
+    <div class="modal-box">
+      <h2>Настройки</h2>
       <label><input type="checkbox" checked> 🔊 Звук</label>
       <label><input type="checkbox" checked> 📳 Вибрация</label>
       <label><input type="checkbox" checked> 🌙 Тёмная тема</label>
-
       <button id="closeSettings">Закрыть</button>
     </div>
   </div>
