@@ -1,45 +1,108 @@
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #6a0dad;
-  color: white;
-  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #7b3ff2, #1a082d);
+  color: #fff;
 }
 
 .screen {
-  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hidden {
   display: none;
 }
 
+.subtitle {
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  width: 70%;
+  margin-bottom: 15px;
+}
+
+.main-btn {
+  background: #7c5cff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+}
+
 header {
+  width: 100%;
+  padding: 12px 20px;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-}
-
-.click-btn {
-  margin: 20px auto;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  font-size: 32px;
-  border: none;
-}
-
-nav button {
-  margin: 5px;
+  background: rgba(0,0,0,0.3);
 }
 
 .tab {
-  margin-top: 20px;
+  flex: 1;
+  width: 100%;
+  padding: 15px;
+  overflow-y: auto;
 }
 
-button {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 8px;
+.cat-card {
+  text-align: center;
+}
+
+.cat-card img {
+  width: 160px;
+  margin: 20px 0;
+}
+
+.stats {
+  margin-bottom: 15px;
+}
+
+.click-btn {
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
+  color: #000;
   border: none;
+  padding: 16px 40px;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #6aff6a, #2ecc71);
+  border: none;
+  border-radius: 14px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
 }
