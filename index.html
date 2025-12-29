@@ -11,53 +11,124 @@
 <div id="app">
 
   <!-- LOGIN -->
-  <div id="login" class="screen">
-    <h1>🐱 CATBOOM</h1>
-    <input type="text" id="nickname" placeholder="Введи ник" />
-    <button onclick="startGame()">PLAY</button>
-  </div>
+  <section id="login" class="screen">
+    <div class="login-box">
+      <h1>🐱 CATBOOM</h1>
+      <p>Империя кошек</p>
+      <input id="nickname" type="text" placeholder="Введи ник" />
+      <button id="playBtn">Играть</button>
+    </div>
+  </section>
 
   <!-- GAME -->
-  <div id="game" class="screen hidden">
+  <section id="game" class="screen hidden">
 
     <!-- HEADER -->
-    <div class="header">
-      <div>Баланс: <span id="balance">0</span> k</div>
-      <div>За клик: <span id="perClick">1</span> k</div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tab active" id="tab-main">
-      <div class="cat-area">
-        <img src="https://i.imgur.com/3ZQ3ZQF.png" class="cat" />
-        <button class="click-btn" onclick="clickCat()">КЛИК 🐾</button>
+    <header class="header">
+      <div class="balance">
+        <span>Баланс</span>
+        <strong><span id="balance">0</span> k</strong>
       </div>
-    </div>
+      <div class="per-click">
+        <span>За клик</span>
+        <strong><span id="perClick">1</span> k</strong>
+      </div>
+    </header>
 
-    <div class="tab" id="tab-shop">
-      <h2>🛒 Магазин</h2>
-      <button onclick="buyUpgrade()">Прокачка (+0.5 за клик) — <span id="upgradePrice">10</span> k</button>
-    </div>
+    <!-- CONTENT -->
+    <main class="content">
 
-    <div class="tab" id="tab-cats">
-      <h2>🐈 Коты</h2>
-      <p>Скоро тут будут мемные коты 😼</p>
-    </div>
+      <!-- TAB: MAIN -->
+      <div class="tab active" id="tab-main">
+        <div class="cat-wrapper">
+          <img id="mainCat" src="cat-start.png" alt="Кот" />
+          <button id="clickBtn">КЛИК 🐾</button>
+        </div>
 
-    <div class="tab" id="tab-settings">
-      <h2>⚙️ Настройки</h2>
-      <button onclick="resetGame()">Сброс</button>
-    </div>
+        <div class="stats">
+          <div>Пассивный доход: <span id="passive">0</span> k/сек</div>
+        </div>
+      </div>
+
+      <!-- TAB: SHOP -->
+      <div class="tab" id="tab-shop">
+        <h2>🛒 Магазин</h2>
+
+        <div class="card">
+          <h3>Прокачка клика</h3>
+          <p>+0.5 k за клик</p>
+          <button id="buyClickUpgrade">
+            Купить — <span id="clickUpgradePrice">10</span> k
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Прокачка ожидания</h3>
+          <p>+0.5 k в сек</p>
+          <button id="buyIdleUpgrade">
+            Купить — <span id="idleUpgradePrice">20</span> k
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB: CATS -->
+      <div class="tab" id="tab-cats">
+        <h2>🐈 Коты</h2>
+
+        <div class="card">
+          <h3>Кот бедолага</h3>
+          <p>+1 k клик / +0.5 k ожидание</p>
+          <button data-cat="poor">Купить (100 k)</button>
+        </div>
+
+        <div class="card">
+          <h3>Кот обычный</h3>
+          <p>+5 k клик / +2 k ожидание</p>
+          <button data-cat="normal">Купить (1000 k)</button>
+        </div>
+
+        <div class="card">
+          <h3>Кот бизнесмен</h3>
+          <p>+10 k клик / +5 k ожидание</p>
+          <button data-cat="boss">Купить (10000 k)</button>
+        </div>
+      </div>
+
+      <!-- TAB: FACTORY -->
+      <div class="tab" id="tab-factory">
+        <h2>🏭 Завод котов</h2>
+
+        <div class="card">
+          <p>Котов на заводе: <span id="factoryCats">0</span> / <span id="factoryLimit">5</span></p>
+          <p>Доход завода: <span id="factoryIncome">0</span> k/сек</p>
+        </div>
+
+        <div class="card">
+          <h3>Расширить завод</h3>
+          <button id="upgradeFactory">
+            Купить слот — <span id="factoryUpgradePrice">500</span> k
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB: SETTINGS -->
+      <div class="tab" id="tab-settings">
+        <h2>⚙️ Настройки</h2>
+        <button id="resetBtn">Сбросить прогресс</button>
+      </div>
+
+    </main>
 
     <!-- NAV -->
-    <nav>
-      <button onclick="openTab('main')">🏠</button>
-      <button onclick="openTab('shop')">🛒</button>
-      <button onclick="openTab('cats')">🐱</button>
-      <button onclick="openTab('settings')">⚙️</button>
+    <nav class="nav">
+      <button data-tab="main">🏠</button>
+      <button data-tab="shop">🛒</button>
+      <button data-tab="cats">🐱</button>
+      <button data-tab="factory">🏭</button>
+      <button data-tab="settings">⚙️</button>
     </nav>
 
-  </div>
+  </section>
 
 </div>
 
