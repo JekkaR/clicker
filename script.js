@@ -1,24 +1,47 @@
-const tg = window.Telegram?.WebApp;
-if (tg) {
-  tg.ready();
-  tg.expand();
-}
+let balance = 0;
+let perClick = 1;
 
-const openBtn = document.getElementById("openSettings");
-const closeBtn = document.getElementById("closeSettings");
+let upgradeCost = 10;
+let upgradeBonus = 0.5;
+
+const balanceEl = document.getElementById("balance");
+const perClickEl = document.getElementById("perClick");
+const clickBtn = document.getElementById("clickBtn");
+
+const upgradeBtn = document.getElementById("upgradeBtn");
+const upgradeInfo = document.getElementById("upgradeInfo");
+
 const settings = document.getElementById("settings");
-const overlay = document.getElementById("overlay");
+const settingsBtn = document.getElementById("settingsBtn");
+const closeSettings = document.getElementById("closeSettings");
 
-function openSettings() {
+function updateUI() {
+  balanceEl.textContent = balance.toFixed(1) + " c";
+  perClickEl.textContent = "+" + perClick.toFixed(1) + " c за клик";
+  upgradeBtn.textContent = "Купить за " + upgradeCost + " c";
+  upgradeInfo.textContent = "+" + upgradeBonus + " c";
+}
+
+clickBtn.onclick = () => {
+  balance += perClick;
+  updateUI();
+};
+
+upgradeBtn.onclick = () => {
+  if (balance >= upgradeCost) {
+    balance -= upgradeCost;
+    perClick += upgradeBonus;
+    upgradeCost *= 2;
+    updateUI();
+  }
+};
+
+settingsBtn.onclick = () => {
   settings.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-}
+};
 
-function closeSettings() {
+closeSettings.onclick = () => {
   settings.classList.add("hidden");
-  overlay.classList.add("hidden");
-}
+};
 
-openBtn.addEventListener("click", openSettings);
-closeBtn.addEventListener("click", closeSettings);
-overlay.addEventListener("click", closeSettings);
+updateUI();
