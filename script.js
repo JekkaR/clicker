@@ -1,5 +1,5 @@
 let data = JSON.parse(localStorage.getItem("catboom")) || {
-  nickname: "",
+  nickname: "Ник",
   balance: 0,
   perClick: 1,
   perSecond: 0.5,
@@ -20,33 +20,24 @@ function save() {
   localStorage.setItem("catboom", JSON.stringify(data));
 }
 
-function startGame() {
-  const nick = document.getElementById("nicknameInput").value;
-  if (!nick) return;
-  data.nickname = nick;
-  save();
-  init();
-}
-
-function init() {
-  if (!data.nickname) return;
-  document.getElementById("auth").classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
-  document.getElementById("nickname").innerText = data.nickname;
-  updateUI();
-}
-
 function updateUI() {
   document.getElementById("balance").innerText = data.balance.toFixed(1);
-  document.getElementById("perClick").innerText = data.perClick;
-  document.getElementById("perSecond").innerText = data.perSecond;
-  document.getElementById("clickPrice").innerText = 10 * Math.pow(2, data.clickLevel);
-  document.getElementById("idlePrice").innerText = 15 * Math.pow(2, data.idleLevel);
+  document.getElementById("perClick").innerText = data.perClick.toFixed(1);
+  document.getElementById("perSecond").innerText = data.perSecond.toFixed(1);
 
-  const totalCats = data.cats.reduce((a,b)=>a+b,0);
-  document.getElementById("factoryCats").innerText = totalCats;
+  document.getElementById("clickPrice").innerText =
+    10 * Math.pow(2, data.clickLevel);
+
+  document.getElementById("idlePrice").innerText =
+    15 * Math.pow(2, data.idleLevel);
+
+  document.getElementById("factoryCats").innerText =
+    data.cats.reduce((a, b) => a + b, 0);
+
   document.getElementById("factoryLimit").innerText = data.factoryLimit;
   document.getElementById("factoryPrice").innerText = data.factoryPrice;
+
+  document.getElementById("username").innerText = data.nickname;
 }
 
 function clickCat() {
@@ -58,6 +49,7 @@ function clickCat() {
 function buyClick() {
   const price = 10 * Math.pow(2, data.clickLevel);
   if (data.balance < price) return;
+
   data.balance -= price;
   data.perClick += 0.5;
   data.clickLevel++;
@@ -68,6 +60,7 @@ function buyClick() {
 function buyIdle() {
   const price = 15 * Math.pow(2, data.idleLevel);
   if (data.balance < price) return;
+
   data.balance -= price;
   data.perSecond += 0.25;
   data.idleLevel++;
@@ -77,7 +70,7 @@ function buyIdle() {
 
 function buyCat(i) {
   const price = catsData[i].base * Math.pow(2, data.cats[i]);
-  const totalCats = data.cats.reduce((a,b)=>a+b,0);
+  const totalCats = data.cats.reduce((a, b) => a + b, 0);
 
   if (data.balance < price) return;
   if (totalCats >= data.factoryLimit) return;
@@ -86,22 +79,26 @@ function buyCat(i) {
   data.cats[i]++;
   data.perClick += catsData[i].click;
   data.perSecond += catsData[i].idle;
+
   save();
   updateUI();
 }
 
-function upgradeFactory() {
+function expandFactory() {
   if (data.balance < data.factoryPrice) return;
 
   data.balance -= data.factoryPrice;
   data.factoryLimit += 5;
   data.factoryPrice *= 2;
+
   save();
   updateUI();
 }
 
 function openTab(id) {
-  document.querySelectorAll(".tab").forEach(t => t.classList.add("hidden"));
+  document.querySelectorAll(".tab").forEach(tab =>
+    tab.classList.add("hidden")
+  );
   document.getElementById(id).classList.remove("hidden");
 }
 
@@ -111,4 +108,4 @@ setInterval(() => {
   updateUI();
 }, 1000);
 
-init();
+updateUI();
