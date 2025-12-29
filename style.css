@@ -106,3 +106,51 @@ nav {
   padding: 10px;
   background: rgba(0,0,0,0.4);
 }
+/* ==== FIX ДЛЯ МОЗГА ==== */
+
+body {
+  margin: 0;
+  overflow: hidden; /* убираем скролл */
+  touch-action: manipulation;
+}
+
+.screen {
+  height: 100vh;
+}
+
+/* ===== КНОПКА КЛИКА ===== */
+.click-btn {
+  width: 90%;
+  max-width: 360px;
+  height: 90px;
+  font-size: 28px;
+  border-radius: 30px;
+  margin: 25px auto;
+  display: block;
+}
+
+/* ===== НИЖНЕЕ МЕНЮ ===== */
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background: #2b1457;
+  padding: 10px 0;
+}
+
+nav button {
+  flex: 1;
+  height: 65px;
+  font-size: 18px;
+  border-radius: 18px;
+  margin: 0 6px;
+}
+
+/* ===== ВКЛАДКИ ===== */
+.tab {
+  height: calc(100vh - 260px);
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
