@@ -1,60 +1,107 @@
-body {
-  margin: 0;
-  background: #0b0f1a;
-  color: white;
+* {
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
-/* кнопка шестерёнки */
-.gear {
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #0b1220, #000);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ИГРА */
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#balance {
+  font-size: 42px;
+}
+
+#perClick {
+  opacity: 0.8;
+}
+
+#clickBtn {
+  font-size: 26px;
+  padding: 22px 50px;
+  border-radius: 14px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+}
+
+/* ПРОКАЧКА */
+#upgrade {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 14px;
+  background: #111827;
+  width: 260px;
+  text-align: center;
+}
+
+#upgrade button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #22c55e;
+  color: black;
+  font-weight: bold;
+}
+
+/* НАСТРОЙКИ */
+#settingsBtn {
   position: fixed;
-  top: 12px;
-  right: 12px;
-  font-size: 22px;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
   background: none;
   border: none;
   color: white;
-  z-index: 1000;
 }
 
-/* затемнение */
-.overlay {
+#settings {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* окно настроек */
-.settings {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.hidden {
+  display: none;
+}
+
+.panel {
   background: #111827;
   padding: 20px;
-  border-radius: 14px;
-  width: 260px;
-  z-index: 3000;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 300px;
 }
 
-.settings label {
+.panel label {
   display: block;
   margin: 10px 0;
 }
 
-.close-btn {
-  margin-top: 15px;
+#closeSettings {
   width: 100%;
-  padding: 8px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
   background: #2563eb;
   color: white;
-  font-size: 16px;
-}
-
-/* скрытие */
-.hidden {
-  display: none;
 }
