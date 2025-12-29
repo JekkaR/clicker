@@ -1,150 +1,105 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
+/* FIX: убираем скролл страницы */
+html, body {
+  height: 100%;
+  overflow: hidden;
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(180deg, #5b2b82, #2b1240);
-  color: #fff;
-}
-
-.screen {
-  padding: 16px;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #0f0f1a;
+  color: white;
 }
 
 .hidden {
   display: none;
 }
 
-/* ---------- AUTH ---------- */
-#auth {
+.screen {
+  height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* LOGIN */
+#login {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-
-#auth h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-#auth input {
-  width: 80%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  margin-bottom: 12px;
-  font-size: 16px;
-}
-
-#auth button {
-  width: 80%;
-  padding: 14px;
-  border-radius: 14px;
-  border: none;
-  font-size: 18px;
-  background: #ffcc00;
-  color: #000;
-}
-
-/* ---------- HEADER ---------- */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.1);
-  padding: 10px 14px;
-  border-radius: 14px;
-}
-
-/* ---------- CENTER ---------- */
-.center {
-  margin-top: 20px;
+  gap: 12px;
   text-align: center;
 }
 
-.cat {
-  font-size: 96px;
+#login input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+}
+
+#login button {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  background: #7a5cff;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
-/* ---------- CLICK BUTTON ---------- */
+/* TABS */
+.tab {
+  display: none;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  padding-bottom: 90px;
+}
+
+.tab.active {
+  display: block;
+}
+
+/* MAIN */
+.cat-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.cat {
+  width: 200px;
+}
+
 .click-btn {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
+  padding: 14px 24px;
+  font-size: 20px;
+  border-radius: 16px;
   border: none;
-  background: radial-gradient(circle, #ffdd55, #ff9900);
-  font-size: 30px;
-  font-weight: bold;
-  color: #000;
-  margin: 10px auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  transition: transform 0.1s;
+  background: #ff7ad9;
+  color: black;
 }
 
-.click-btn:active {
-  transform: scale(0.95);
-}
-
-/* ---------- STATS ---------- */
-.stats {
-  margin-top: 10px;
-}
-
-.stats div {
-  margin: 4px 0;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-/* ---------- NAV ---------- */
+/* NAV */
 nav {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  height: 70px;
+  background: #151529;
   display: flex;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav button {
-  flex: 1;
-  padding: 14px 0;
+  background: none;
   border: none;
-  background: transparent;
   color: white;
-  font-size: 18px;
-}
-
-/* ---------- TABS ---------- */
-.tab {
-  margin-top: 20px;
-  padding-bottom: 80px;
-}
-
-.tab h2 {
-  margin-bottom: 10px;
-}
-
-/* ---------- CARDS ---------- */
-.tab button,
-#catsList div {
-  width: 100%;
-  background: rgba(255,255,255,0.12);
-  border: none;
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 10px;
-  color: white;
-}
-
-#catsList div button {
-  margin-top: 8px;
-  background: #ffcc00;
-  color: #000;
+  font-size: 22px;
 }
