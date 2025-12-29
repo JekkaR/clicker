@@ -1,73 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #5b2b82;
-  color: white;
-  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(180deg, #5b2b82, #2b1240);
+  color: #fff;
 }
 
 .screen {
   padding: 16px;
+  min-height: 100vh;
 }
 
 .hidden {
   display: none;
 }
 
+/* ---------- AUTH ---------- */
+#auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#auth h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+#auth input {
+  width: 80%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+#auth button {
+  width: 80%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 18px;
+  background: #ffcc00;
+  color: #000;
+}
+
+/* ---------- HEADER ---------- */
 header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  padding: 10px 14px;
+  border-radius: 14px;
 }
 
+/* ---------- CENTER ---------- */
 .center {
-  margin: 20px 0;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .cat {
-  font-size: 80px;
+  font-size: 96px;
   margin-bottom: 10px;
 }
 
+/* ---------- CLICK BUTTON ---------- */
 .click-btn {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  font-size: 28px;
   border: none;
-  margin: 10px 0;
+  background: radial-gradient(circle, #ffdd55, #ff9900);
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  margin: 10px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform 0.1s;
+}
+
+.click-btn:active {
+  transform: scale(0.95);
+}
+
+/* ---------- STATS ---------- */
+.stats {
+  margin-top: 10px;
 }
 
 .stats div {
   margin: 4px 0;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
+/* ---------- NAV ---------- */
 nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
 }
 
 nav button {
   flex: 1;
-  margin: 0 3px;
-}
-
-.tab {
-  margin-top: 15px;
-}
-
-button {
-  padding: 10px;
-  border-radius: 10px;
+  padding: 14px 0;
   border: none;
-  margin: 5px;
-  font-size: 14px;
+  background: transparent;
+  color: white;
+  font-size: 18px;
 }
 
+/* ---------- TABS ---------- */
+.tab {
+  margin-top: 20px;
+  padding-bottom: 80px;
+}
+
+.tab h2 {
+  margin-bottom: 10px;
+}
+
+/* ---------- CARDS ---------- */
+.tab button,
 #catsList div {
-  background: rgba(255,255,255,0.1);
-  margin: 8px;
-  padding: 10px;
-  border-radius: 10px;
+  width: 100%;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+#catsList div button {
+  margin-top: 8px;
+  background: #ffcc00;
+  color: #000;
 }
