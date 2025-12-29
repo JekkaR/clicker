@@ -1,3 +1,14 @@
+let data = {
+  balance: 0,
+  perClick: 1,
+  perSecond: 0.5,
+  clickLevel: 0,
+  idleLevel: 0,
+
+  factoryCats: 0,
+  factoryLimit: 5,
+  factoryPrice: 500
+};
 let data = JSON.parse(localStorage.getItem("catboom")) || {
   nickname: "",
   balance: 0,
