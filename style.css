@@ -1,13 +1,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #6a0dad;
+  background: #5b2b82;
   color: white;
   text-align: center;
 }
 
 .screen {
-  padding: 20px;
+  padding: 16px;
 }
 
 .hidden {
@@ -17,29 +17,57 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.center {
+  margin: 20px 0;
+}
+
+.cat {
+  font-size: 80px;
+  margin-bottom: 10px;
 }
 
 .click-btn {
-  margin: 20px auto;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  font-size: 32px;
+  font-size: 28px;
   border: none;
+  margin: 10px 0;
+}
+
+.stats div {
+  margin: 4px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
 }
 
 nav button {
-  margin: 5px;
+  flex: 1;
+  margin: 0 3px;
 }
 
 .tab {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 button {
   padding: 10px;
-  margin: 5px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
+  margin: 5px;
+  font-size: 14px;
+}
+
+#catsList div {
+  background: rgba(255,255,255,0.1);
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
 }
