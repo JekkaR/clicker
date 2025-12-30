@@ -1,57 +1,73 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: radial-gradient(circle at top, #1c1c1c, #000);
+  margin: 0;
+  background: linear-gradient(#111, #000);
   color: #fff;
   font-family: Arial, sans-serif;
-  height: 100vh;
 }
 
-.app {
-  max-width: 420px;
-  margin: auto;
-  padding: 20px;
+.top {
   text-align: center;
+  padding: 20px;
 }
 
-h1 {
-  margin-bottom: 15px;
-  letter-spacing: 2px;
+.title {
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .balance {
-  font-size: 42px;
-  margin: 20px 0;
-  font-weight: bold;
+  font-size: 40px;
+  margin: 10px 0;
 }
 
-.mouse {
-  font-size: 100px;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.1s;
-}
-
-.mouse:active {
-  transform: scale(0.9);
-}
-
-.info {
-  margin-top: 10px;
+.energy {
   opacity: 0.8;
 }
 
-.upgrade {
-  margin-top: 20px;
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.click-btn {
+  font-size: 100px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.actions {
+  padding: 15px;
+}
+
+.actions button {
   width: 100%;
+  margin-bottom: 10px;
   padding: 15px;
   font-size: 18px;
-  background: #ffb703;
   border: none;
   border-radius: 12px;
+  background: #ffb703;
   font-weight: bold;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.modal-box button {
+  margin-top: 10px;
+  width: 100%;
 }
