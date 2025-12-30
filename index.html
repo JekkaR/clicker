@@ -2,28 +2,32 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Mouse Clicker</title>
+  <title>MOUSE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
-  <h1>🐹 MOUSE</h1>
-
+<div class="top">
+  <div class="title">🐭 MOUSE</div>
   <div class="balance" id="coins">0</div>
-
-  <div class="hamster" onclick="clickCoin()">🐹</div>
-
-  <div class="info">
-    ⚡ Энергия: <span id="energy">100</span>
-  </div>
-
-  <button class="upgrade" onclick="upgradeClick()">
-    ➕ Улучшить клик (10)
-  </button>
+  <div class="energy">⚡ Энергия: <span id="energy">0</span></div>
 </div>
+
+<div class="center">
+  <div class="click-btn" onclick="clickCoin()">🐭</div>
+</div>
+
+<div class="actions">
+  <button onclick="upgradeClick()">➕ Улучшить клик (<span id="upgradeCost">0</span>)</button>
+  <button onclick="openShop()">🏪 Магазин</button>
+  <button onclick="openMissions()">🎯 Миссии</button>
+  <button onclick="playMini()">🎮 Мини-игра</button>
+</div>
+
+<!-- МОДАЛКИ -->
+<div class="modal" id="modal"></div>
 
 <script src="script.js"></script>
 </body>
