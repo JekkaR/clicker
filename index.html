@@ -2,78 +2,28 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <title>Mouse Clicker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CATBOOM</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-  <div>👤 <span id="username">Ник</span></div>
-  <div>💰 <span id="balance">0</span>k</div>
-</header>
+<div class="app">
+  <h1>🐹 MOUSE</h1>
 
-<!-- ===== HOME / CLICK ===== -->
-<div id="home" class="screen tab">
-  <div class="stats">
-    👉 <span id="perClick">0</span>k<br>
-    🔄 <span id="perSecond">0</span>k / сек
+  <div class="balance" id="coins">0</div>
+
+  <div class="hamster" onclick="clickCoin()">🐹</div>
+
+  <div class="info">
+    ⚡ Энергия: <span id="energy">100</span>
   </div>
 
-  <button class="click-btn" onclick="clickCat()">КЛИК</button>
+  <button class="upgrade" onclick="upgradeClick()">
+    ➕ Улучшить клик (10)
+  </button>
 </div>
-
-<!-- ===== SHOP ===== -->
-<div id="shop" class="screen tab hidden">
-  <h2 class="subtitle">🛒 Магазин</h2>
-
-  <div class="card">
-    <div>+0.5k за клик</div>
-    <button onclick="buyClick()">Купить (<span id="clickPrice">10</span>k)</button>
-  </div>
-
-  <div class="card">
-    <div>+0.25k в сек</div>
-    <button onclick="buyIdle()">Купить (<span id="idlePrice">15</span>k)</button>
-  </div>
-</div>
-
-<!-- ===== CATS ===== -->
-<div id="cats" class="screen tab hidden">
-  <h2 class="subtitle">🐱 Коты</h2>
-
-  <div class="card">
-    <div>😺 Бедолага</div>
-    <div>+1k / +0.5k</div>
-    <button onclick="buyCat(0)">Купить 100k</button>
-  </div>
-
-  <div class="card">
-    <div>😼 Обычный</div>
-    <div>+5k / +2k</div>
-    <button onclick="buyCat(1)">Купить 1000k</button>
-  </div>
-</div>
-
-<!-- ===== FACTORY ===== -->
-<div id="factory" class="screen tab hidden">
-  <div class="factory-card">
-    <h2>🏭 Завод</h2>
-    <p>Котов: <span id="factoryCats">0</span> / <span id="factoryLimit">5</span></p>
-    <button class="factory-btn" onclick="expandFactory()">
-      Расширить (<span id="factoryPrice">500</span>k)
-    </button>
-  </div>
-</div>
-
-<!-- ===== NAV ===== -->
-<nav>
-  <button onclick="openTab('home')">🏠</button>
-  <button onclick="openTab('shop')">🛒</button>
-  <button onclick="openTab('cats')">🐱</button>
-  <button onclick="openTab('factory')">🏭</button>
-</nav>
 
 <script src="script.js"></script>
 </body>
