@@ -1,111 +1,66 @@
-let data = JSON.parse(localStorage.getItem("catboom")) || {
-  nickname: "Ник",
-  balance: 0,
-  perClick: 1,
-  perSecond: 0.5,
-  clickLevel: 0,
-  idleLevel: 0,
-  cats: [0, 0, 0],
-  factoryLimit: 5,
-  factoryPrice: 500
-};
+const tg = window.Telegram.WebApp;
+tg.expand();
 
-const catsData = [
-  { click: 1, idle: 0.5, base: 100 },
-  { click: 5, idle: 2, base: 1000 },
-  { click: 10, idle: 5, base: 10000 }
-];
+// ДАННЫЕ
+let coins = Number(localStorage.getItem("coins")) || 0;
+let perClick = Number(localStorage.getItem("perClick")) || 1;
+let energy = Number(localStorage.getItem("energy")) || 100;
+let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 10;
 
-function save() {
-  localStorage.setItem("catboom", JSON.stringify(data));
-}
+// OFFLINE ДОХОД
+const lastTime = Number(localStorage.getItem("lastTime")) || Date.now();
+const now = Date.now();
+const seconds = Math.floor((now - lastTime) / 1000);
+coins += seconds * 0.3;
 
-function updateUI() {
-  document.getElementById("balance").innerText = data.balance.toFixed(1);
-  document.getElementById("perClick").innerText = data.perClick.toFixed(1);
-  document.getElementById("perSecond").innerText = data.perSecond.toFixed(1);
-
-  document.getElementById("clickPrice").innerText =
-    10 * Math.pow(2, data.clickLevel);
-
-  document.getElementById("idlePrice").innerText =
-    15 * Math.pow(2, data.idleLevel);
-
-  document.getElementById("factoryCats").innerText =
-    data.cats.reduce((a, b) => a + b, 0);
-
-  document.getElementById("factoryLimit").innerText = data.factoryLimit;
-  document.getElementById("factoryPrice").innerText = data.factoryPrice;
-
-  document.getElementById("username").innerText = data.nickname;
-}
-
-function clickCat() {
-  data.balance += data.perClick;
-  save();
-  updateUI();
-}
-
-function buyClick() {
-  const price = 10 * Math.pow(2, data.clickLevel);
-  if (data.balance < price) return;
-
-  data.balance -= price;
-  data.perClick += 0.5;
-  data.clickLevel++;
-  save();
-  updateUI();
-}
-
-function buyIdle() {
-  const price = 15 * Math.pow(2, data.idleLevel);
-  if (data.balance < price) return;
-
-  data.balance -= price;
-  data.perSecond += 0.25;
-  data.idleLevel++;
-  save();
-  updateUI();
-}
-
-function buyCat(i) {
-  const price = catsData[i].base * Math.pow(2, data.cats[i]);
-  const totalCats = data.cats.reduce((a, b) => a + b, 0);
-
-  if (data.balance < price) return;
-  if (totalCats >= data.factoryLimit) return;
-
-  data.balance -= price;
-  data.cats[i]++;
-  data.perClick += catsData[i].click;
-  data.perSecond += catsData[i].idle;
-
-  save();
-  updateUI();
-}
-
-function expandFactory() {
-  if (data.balance < data.factoryPrice) return;
-
-  data.balance -= data.factoryPrice;
-  data.factoryLimit += 5;
-  data.factoryPrice *= 2;
-
-  save();
-  updateUI();
-}
-
-function openTab(id) {
-  document.querySelectorAll(".tab").forEach(tab =>
-    tab.classList.add("hidden")
-  );
-  document.getElementById(id).classList.remove("hidden");
-}
-
-setInterval(() => {
-  data.balance += data.perSecond;
-  save();
-  updateUI();
-}, 1000);
-
+// UI
 updateUI();
+
+// КЛИК
+function clickCoin() {
+  if (energy <= 0) return;
+
+  coins += perClick;
+  energy--;
+
+  save();
+  updateUI();
+}
+
+// ПРОКАЧКА
+function upgradeClick() {
+  if (coins < upgradeCost) return;
+
+  coins -= upgradeCost;
+  perClick++;
+  upgradeCost = Math.floor(upgradeCost * 1.8);
+
+  save();
+  updateUI();
+}
+
+// СОХРАНЕНИЕ
+function save() {
+  localStorage.setItem("coins", coins);
+  localStorage.setItem("perClick", perClick);
+  localStorage.setItem("energy", energy);
+  localStorage.setItem("upgradeCost", upgradeCost);
+  localStorage.setItem("lastTime", Date.now());
+}
+
+// UI ОБНОВЛЕНИЕ
+function updateUI() {
+  document.getElementById("coins").innerText = Math.floor(coins);
+  document.getElementById("energy").innerText = energy;
+  document.querySelector(".upgrade").innerText =
+    `➕ Улучшить клик (${upgradeCost})`;
+}
+
+// ВОССТАНОВЛЕНИЕ ЭНЕРГИИ
+setInterval(() => {
+  if (energy < 100) {
+    energy++;
+    save();
+    updateUI();
+  }
+}, 3000);
